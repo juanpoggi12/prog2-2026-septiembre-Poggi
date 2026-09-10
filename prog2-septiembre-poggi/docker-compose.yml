@@ -1,0 +1,22 @@
+services:
+  db:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: prog2-db
+    environment:
+      MYSQL_ROOT_PASSWORD: admin
+      MYSQL_DATABASE: PROG2_SE26_Poggi
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - prog2-net
+
+volumes:
+  db_data:
+
+networks:
+  prog2-net:
+    driver: bridge
